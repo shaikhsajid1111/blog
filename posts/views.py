@@ -9,3 +9,12 @@ class PostList(ListView):
 class PostDetail(DetailView):
     model = Post
     template_name = 'post_detail.html'
+
+""" class searchView(ListView):
+   template_name = 'search.html'
+   def get(self,request):
+       query = request.GET['query']
+        """
+def search(request):
+    query = request.GET['query']
+    render(request,"search.html",{"post_list":Post.objects.all()})        
