@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login,logout,authenticate
 from django.views.generic import TemplateView
 from django.db import IntegrityError
-
+from django.contrib.auth.models import Permission
 
 class signUpView(TemplateView):
     template_name = "index.html"
@@ -19,6 +19,9 @@ class signUpView(TemplateView):
                 my_user = User.objects.create_user(username,email,password)
                 my_user.first_name = fname
                 my_user.last_name = lname
+                my_user.is_superuser = False
+                my_user.is_staff = False
+                #permission = Permission.objects.get(name= "posts post Can View post")
                 my_user.save()
                 return redirect("/")
             else:
