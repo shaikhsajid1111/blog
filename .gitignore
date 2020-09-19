@@ -134,3 +134,6 @@ dmypy.json
 
 /*/__pycache__/
 /*/*/__pycache__
+/users/migrations
+/posts/migrations
+/*/migrations
