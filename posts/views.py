@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib import admin
 from django.views.generic import ListView,DetailView
 from . models import Post
+from django.utils.datastructures import MultiValueDictKeyError
 # Create your views here.
 class PostList(ListView):
     queryset = Post.objects.filter(status = 1).order_by('-created_on')
@@ -13,4 +14,7 @@ class PostDetail(DetailView):
 
 def search(request):
     query = request.GET['query']
-    return render(request,"search.html",{"post_list": Post.objects.filter(title__icontains = query)})        
+    if query != "":
+        return render(request,"search.html",{"post_list": Post.objects.filter(title__icontains = query)})        
+    else:
+        return redirect("/")
