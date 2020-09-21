@@ -21,9 +21,8 @@ class signUpView(TemplateView):
                 my_user.last_name = lname
                 my_user.is_superuser = False
                 my_user.is_staff = False
-                #permission = Permission.objects.get(name= "posts post Can View post")
                 my_user.save()
-                return redirect("/")
+                return HttpResponse("Account has been created please go to home page and login")
             else:
                 return HttpResponse("Passwords does not match!")
         except IntegrityError:
@@ -44,3 +43,6 @@ class loginView(TemplateView):
                 return HttpResponse("Invalid Credentials!")    
         except Exception as ex:
             return HttpResponse(ex)    
+def handleLogout(request):
+    logout(request)
+    return redirect('/')

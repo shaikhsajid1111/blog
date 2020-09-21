@@ -18,5 +18,6 @@ from django.urls import path,include
 from . import views
 urlpatterns = [
     path('signup/',views.signUpView.as_view(),name = "signup"),
-    path("login/",views.loginView.as_view(),name = "login")
+    path("login/",views.loginView.as_view(),name = "login"),
+    path("logout/",views.handleLogout,name="logout")
 ]
