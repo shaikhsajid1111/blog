@@ -44,7 +44,7 @@
           <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="GET">
 
             <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search" required>
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
           
           </form>
 
@@ -56,17 +56,21 @@
 
 </head>
 <body>
-  
-    
+ <div class="container-fluid col "> 
+ <!--post-->   
 {% for post in post_list %}
 <div class="card">
   <!--<img class="card-img-top" src="..." alt="Card image cap">-->
   <div class="card-body">
     <h2 class="card-title">{{post.title}}</h2>
     <p class="card-text max-lines">{{post.content}}</p>
-    <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary">Read more</a>
+    <a href="{% url 'post_detail' post.slug %}" class="btn btn-info btn-sm">Read more</a>
   </div>
 </div>
+
+ <!--post-->
+
+
 {% endfor %}
 
     <!-- Button trigger modal -->
@@ -180,7 +184,7 @@
       </div>
     </div>
   </div>
-   
+</div>   
 
 <!---logout modal ends here -->
 
@@ -188,6 +192,6 @@
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>
