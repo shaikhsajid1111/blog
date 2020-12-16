@@ -1,0 +1,44 @@
+body{
+    min-height: 100% !important;
+    margin-bottom:50px;
+}
+.first-letter-big::first-letter{
+   font-size: 2em;
+  }
+
+  .article-paragraph{
+      background-color: antiquewhite;
+      padding: 5em;
+  }
+  .social-media-icons{
+      position: absolute;
+      right: 0;
+      
+      bottom: 10px;
+    }
+  .social-media-icons ul li{
+    list-style-type: none;
+    float: left;
+    margin: 5px;
+  }
+  .fa-instagram{
+    color :  #e1306c;
+  }
+  .fa-facebook{
+      color: #4267B2;
+  }
+  .fa-twitter{
+      color: #1DA1F2;
+  }
+  .fa-github{
+      color: #333;
+  }
+  .fa-heart{
+      color: red;
+  }
+  .made-with-container{
+    position: relative;
+    margin-bottom: 0px;
+    
+      
+  }

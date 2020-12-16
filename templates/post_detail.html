@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>{{ object.title }}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/post_detail.css' %}" >
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -14,9 +17,7 @@
       
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
+           
             {% if user.is_authenticated %}
             <li class="nav-item" data-toggle="modal" data-target="#logoutModal">
               <a class="nav-link">{{user}}</a>
@@ -53,7 +54,27 @@
     <h5>{{object.author}}</h5><time>{{object.created_on}}<time>
     
     
-    <p class="jumbotron">{{object.content}}</p>
+    <p class="container first-letter-big article-paragraph">{{object.content}}</p>
     </div>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </body>
+<footer>
+  <div class="container text-center made-with-container">
+    Made with <i class="fa fa-heart"></i> by <a href="https://instagram.com/shaikhsajid1111" target="_blank">Sajid</a>
+  </div>
+
+    <div class=" social-media-icons">
+      <ul>
+      <li><a target="_blank" href="https://facebook.com/shaikhsajid1111"><i class="fa fa-facebook"></i></a></li>
+      <li><a target="_blank" href="https://twitter.com/shaikhsajid1111"><i class="fa fa-twitter"></i></a></li>
+      <li><a target="_blank" href="https://instagram.com/shaikhsajid1111"><i class="fa fa-instagram"></i></a></li>
+      <li><a target="_blank" href="https://github.com/shaikhsajid1111"><i class="fa fa-github"></i></a></li>
+    </ul>
+    </div> 
+
+</footer>
 </html>
