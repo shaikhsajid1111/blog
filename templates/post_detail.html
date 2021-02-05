@@ -55,7 +55,30 @@
     
     
     <p class="container first-letter-big article-paragraph">{{object.content}}</p>
-    </div>
+   
+  <div>
+    {%if user.is_authenticated %}
+    <form method="POST" action="{% url 'comment' object.pk %}">
+      {% csrf_token %}
+      <input type="text" name="comment" placeholder="Enter comment">
+      <input type="submit" value="Post Comment">
+    </form>
+
+    {%else%}
+    <h6>Login to comment no this post.</h6>
+    {% endif %}
+    
+    {% if object.comments.all %}
+    {% for comment in object.comments.all %}
+   <h1>{{ object.author }} Says</h1>
+    <p>{{ comment.text }}</p>
+    {% endfor %}
+
+
+    {% endif %}
+    
+  </div>
+  </div>
     <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="

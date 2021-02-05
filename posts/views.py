@@ -1,7 +1,7 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,HttpResponseRedirect,HttpResponse,get_object_or_404
 from django.contrib import admin
 from django.views.generic import ListView,DetailView
-from . models import Post
+from . models import Post,Comment
 from django.utils.datastructures import MultiValueDictKeyError
 # Create your views here.
 class PostList(ListView):
@@ -11,7 +11,37 @@ class PostDetail(DetailView):
     model = Post
     template_name = 'post_detail.html'
 
+def post_comment(request,pk):
 
+    if request.method == "POST":
+        text = request.POST.get('comment')
+        user = request.user
+        post = get_object_or_404(Post,pk=pk)
+        
+        if text != "" and text is not None:
+            comment = Comment()
+            comment.author = user
+            comment.text = text
+            comment.post = post
+            comment.save()
+            return HttpResponseRedirect(request.__dict__['environ']['HTTP_REFERER'])
+        else:
+            return HttpResponse(request.__dict__['environ']['HTTP_REFERER'])
+    else:
+        return HttpResponse("Enter Valid comments!")
+
+
+
+
+
+
+
+
+
+
+
+
+        
 def search(request):
     query = request.GET['query']
     if query != "":
