@@ -70,8 +70,17 @@
     
     {% if object.comments.all %}
     {% for comment in object.comments.all %}
-   <h1>{{ object.author }} Says</h1>
+   <h1>{{ comment.author }} Says</h1>
     <p>{{ comment.text }}</p>
+
+
+    {% if comment.author == user %}
+    {{ request.get_full_path }}
+    <a href="{{ request.get_full_path }}">Delete Primary key: {{ comment.pk }}  </a>
+
+    {% endif %}
+
+
     {% endfor %}
 
 
