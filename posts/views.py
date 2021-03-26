@@ -11,6 +11,10 @@ class PostDetail(DetailView):
     model = Post
     template_name = 'post_detail.html'
 
+
+def delete_comment(request):
+    return HttpResponse("delete Comment!")
+
 def post_comment(request,pk):
 
     if request.method == "POST":
